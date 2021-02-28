@@ -2,27 +2,62 @@ package com.example.anonymeet_api.models;
 
 import com.sun.istack.Nullable;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
-@Entity
-@Table
+@Entity(name = "Profile")
+@Table(
+        uniqueConstraints = {
+                @UniqueConstraint(name = "profile_pseudo_unique", columnNames = "pseudo")
+        }
+)
 public class Profile {
 
     @Id
-    @GeneratedValue
-    private Integer id;
+    @SequenceGenerator(
+            name = "profile_sequence",
+            sequenceName = "profile_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "profile_sequence"
+    )
+    @Column(
+            name = "id",
+            updatable = false
+    )
+    private Long id;
 
+    @Column(
+            name = "pseudo",
+            nullable = false
+    )
     private String pseudo;
+
+    @Column(
+            name = "age",
+            nullable = false
+    )
     private Integer age;
+
+    @Column(
+            name = "gender",
+            nullable = false
+    )
     private String gender;
 
     @Nullable
     private String interest_1, interest_2, interest_3, interest_4, interest_5;
 
     public Profile() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getPseudo() {
