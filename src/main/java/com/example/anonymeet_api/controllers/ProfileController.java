@@ -20,7 +20,7 @@ public class ProfileController {
         this.profileService = profileService;
     }
 
-    @GetMapping("/getAllProfiles")
+    @GetMapping("/getAll")
     public List<Profile> getAllProfiles(){
         return profileService.getAllProfiles();
     }

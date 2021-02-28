@@ -20,7 +20,7 @@ public class InterestController {
         this.interestService = interestService;
     }
 
-    @GetMapping("/getAllInterests")
+    @GetMapping("/getAll")
     public List<Interest> getAllInterests(){
         return interestService.getAllInterests();
     }
