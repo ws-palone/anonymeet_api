@@ -1,15 +1,27 @@
 package com.example.anonymeet_api.controllers;
 
+import com.example.anonymeet_api.models.Profile;
+import com.example.anonymeet_api.services.ProfileService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
-@RequestMapping(path= "anonymeet_api/profile")
+@RequestMapping(path= "/profile")
 public class ProfileController {
 
-    @GetMapping
-    public String hello(){
-        return "Hello";
+    private final ProfileService profileService;
+
+    @Autowired
+    public ProfileController(ProfileService profileService) {
+        this.profileService = profileService;
+    }
+
+    @GetMapping("/getAllProfiles")
+    public List<Profile> getAllProfiles(){
+        return profileService.getAllProfiles();
     }
 }
