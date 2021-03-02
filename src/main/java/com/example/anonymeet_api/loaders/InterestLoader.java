@@ -1,4 +1,4 @@
-package com.example.anonymeet_api.configurations;
+package com.example.anonymeet_api.loaders;
 
 import com.example.anonymeet_api.models.Interest;
 import com.example.anonymeet_api.repositories.InterestRepository;
@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import java.util.List;
 
 @Configuration
-public class InterestConfig {
+public class InterestLoader {
 
     @Bean
     CommandLineRunner commandLineRunner (InterestRepository interestRepository){
