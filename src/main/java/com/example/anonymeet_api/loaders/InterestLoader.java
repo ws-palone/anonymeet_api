@@ -12,7 +12,7 @@ import java.util.List;
 public class InterestLoader {
 
     @Bean
-    CommandLineRunner commandLineRunner (InterestRepository interestRepository){
+    CommandLineRunner clrInterest (InterestRepository interestRepository){
         return args -> {
             Interest cinema = new Interest("Cinéma");
             Interest sport = new Interest("Sport");

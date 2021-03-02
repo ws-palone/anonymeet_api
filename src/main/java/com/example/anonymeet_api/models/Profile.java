@@ -7,7 +7,8 @@ import javax.persistence.*;
 @Entity(name = "Profile")
 @Table(
         uniqueConstraints = {
-                @UniqueConstraint(name = "profile_pseudo_unique", columnNames = "pseudo")
+                @UniqueConstraint(name = "profile_pseudo_unique", columnNames = "pseudo"),
+                @UniqueConstraint(name = "profile_email_unique", columnNames = "email")
         }
 )
 public class Profile {
@@ -27,6 +28,12 @@ public class Profile {
             updatable = false
     )
     private Long id;
+
+    @Column(
+            name = "email",
+            nullable = false
+    )
+    private String email;
 
     @Column(
             name = "pseudo",
@@ -50,6 +57,16 @@ public class Profile {
     private String interest_1, interest_2, interest_3, interest_4, interest_5;
 
     public Profile() {
+    }
+
+    public Profile(String email, String pseudo, Integer age, String gender, String interest_1, String interest_2, String interest_3){
+        this.email = email;
+        this.pseudo = pseudo;
+        this.age = age;
+        this.gender = gender;
+        this.interest_1 = interest_1;
+        this.interest_2 = interest_2;
+        this.interest_3 = interest_3;
     }
 
     public Long getId() {

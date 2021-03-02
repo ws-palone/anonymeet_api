@@ -30,6 +30,11 @@ public class ProfileController {
         return profileService.getAllProfiles();
     }
 
+    @GetMapping("/{email}")
+    public Profile getProfileByEmail(@PathVariable String email){
+        return profileRepository.findProfileByEmail(email);
+    }
+
     //@POST MAPPING
     @PostMapping(path = "/saveProfile")
     public ResponseEntity<String> saveProfile(@RequestBody Profile profile){
