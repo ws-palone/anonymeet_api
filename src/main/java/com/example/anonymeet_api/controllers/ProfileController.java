@@ -30,9 +30,19 @@ public class ProfileController {
         return profileService.getAllProfiles();
     }
 
-    @GetMapping("/{email}")
+    @GetMapping("/findProfileById/{id}")
+    public Profile getProfileByEmail(@PathVariable Long id){
+        return profileRepository.findProfileById(id);
+    }
+
+    @GetMapping("/findProfileByEmail/{email}")
     public Profile getProfileByEmail(@PathVariable String email){
         return profileRepository.findProfileByEmail(email);
+    }
+
+    @GetMapping("/findIdByEmail/{email}")
+    public Long getIdByEmail(@PathVariable String email){
+        return profileRepository.findIdByEmail(email);
     }
 
     //@POST MAPPING

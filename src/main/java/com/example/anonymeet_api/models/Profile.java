@@ -1,8 +1,10 @@
 package com.example.anonymeet_api.models;
 
 import com.sun.istack.Nullable;
+import org.hibernate.annotations.Tables;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity(name = "Profile")
 @Table(
@@ -56,6 +58,16 @@ public class Profile {
     @Nullable
     private String interest_1, interest_2, interest_3, interest_4, interest_5;
 
+    @Column(
+            name = "longitude"
+    )
+    private Double longitude;
+
+    @Column(
+            name = "latitude"
+    )
+    private Double latitude;
+
     public Profile() {
     }
 
@@ -76,6 +88,8 @@ public class Profile {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public String getEmail() { return email; }
 
     public String getPseudo() {
         return pseudo;
@@ -139,5 +153,21 @@ public class Profile {
 
     public void setInterest_5(String interest_5) {
         this.interest_5 = interest_5;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
     }
 }
