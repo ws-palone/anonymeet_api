@@ -22,5 +22,5 @@ public class ProfileLoader {
                     List.of(bot1, bot2, bot3)
             );
         };
-        }
+    }
 }
