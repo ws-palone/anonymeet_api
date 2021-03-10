@@ -1,10 +1,12 @@
 package com.example.anonymeet_api.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.sun.istack.Nullable;
 import org.hibernate.annotations.Tables;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.Date;
 
 @Entity(name = "Profile")
 @Table(
@@ -39,43 +41,61 @@ public class Profile {
 
     @Column(
             name = "pseudo",
-            nullable = false
+            nullable = true
     )
     private String pseudo;
 
+    @Temporal(TemporalType.DATE)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @Column(
             name = "age",
-            nullable = false
+            nullable = true
     )
-    private Integer age;
+    private Date age;
 
     @Column(
             name = "gender",
-            nullable = false
+            nullable = true
     )
     private String gender;
+
+    @Column(
+            name = "gender_orientation",
+            nullable = true
+    )
+    private String genderOrientation;
 
     @Nullable
     private String interest_1, interest_2, interest_3, interest_4, interest_5;
 
     @Column(
-            name = "longitude"
+            name = "longitude",
+            nullable = true
     )
     private Double longitude;
 
     @Column(
-            name = "latitude"
+            name = "latitude",
+            nullable = true
     )
     private Double latitude;
+
+    @Column(
+            name = "image",
+            nullable = true
+    )
+    private String image;
 
     public Profile() {
     }
 
-    public Profile(String email, String pseudo, Integer age, String gender, String interest_1, String interest_2, String interest_3){
+    public Profile(String email, String pseudo, Date age, String gender, String genderOrientation, String image, String interest_1, String interest_2, String interest_3){
         this.email = email;
         this.pseudo = pseudo;
         this.age = age;
         this.gender = gender;
+        this.genderOrientation = genderOrientation;
+        this.image = image;
         this.interest_1 = interest_1;
         this.interest_2 = interest_2;
         this.interest_3 = interest_3;
@@ -99,11 +119,11 @@ public class Profile {
         this.pseudo = pseudo;
     }
 
-    public Integer getAge() {
+    public Date getAge() {
         return age;
     }
 
-    public void setAge(Integer age) {
+    public void setAge(Date age) {
         this.age = age;
     }
 
