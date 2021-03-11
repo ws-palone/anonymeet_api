@@ -1,5 +1,6 @@
 package com.example.anonymeet_api.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -46,6 +47,7 @@ public class Message {
     private String messageContent;
 
     @Temporal(TemporalType.TIMESTAMP)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss.SS")
     @Column(
             name = "date",
             updatable = false
@@ -55,9 +57,11 @@ public class Message {
     public Message() {
     }
 
-    public Message(String messageContent, Long receiver_id, Long sender_id) {
-
+    public Message(Date date,String messageContent, Long receiver_id, Long sender_id) {
+        this.date = date;
         this.messageContent = messageContent;
+        this.receiver_id = receiver_id;
+        this.sender_id = sender_id;
     }
 
     public Long getId() {
