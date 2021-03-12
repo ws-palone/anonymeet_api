@@ -29,9 +29,9 @@ public class ProfileLoader {
     @Bean
     CommandLineRunner clrProfile (ProfileRepository profileRepository){
         return args -> {
-            Profile bot1 = new Profile("bot1@gmail.com", "bot1", date1, "M", "F", null, "Moto", "Cuisine", "Politique");
-            Profile bot2 = new Profile("bot2@gmail.com", "bot2", date2, "M", "F", null,  "Mode", "Sport", "Cinéma");
-            Profile bot3 = new Profile("bot3@gmail.com", "bot3", date3, "F", "M", null, "Danse", "Cuisine", "Netflix");
+            Profile bot1 = new Profile("bot1@gmail.com", "bot1", date1, "M", "F", null, "Moto", "Cuisine", "Politique",-122.078181, 37.419967);
+            Profile bot2 = new Profile("bot2@gmail.com", "bot2", date2, "M", "F", null,  "Mode", "Sport", "Cinéma", -122.088377, 37.421383);
+            Profile bot3 = new Profile("bot3@gmail.com", "bot3", date3, "F", "M", null, "Danse", "Cuisine", "Netflix", -122.097396,37.427882);
 
             profileRepository.saveAll(
                     List.of(bot1, bot2, bot3)

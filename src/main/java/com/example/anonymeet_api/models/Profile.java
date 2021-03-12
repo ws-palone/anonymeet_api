@@ -89,7 +89,7 @@ public class Profile {
     public Profile() {
     }
 
-    public Profile(String email, String pseudo, Date age, String gender, String genderOrientation, String image, String interest_1, String interest_2, String interest_3){
+    public Profile(String email, String pseudo, Date age, String gender, String genderOrientation, String image, String interest_1, String interest_2, String interest_3, Double longitude, Double latitude){
         this.email = email;
         this.pseudo = pseudo;
         this.age = age;
@@ -99,6 +99,8 @@ public class Profile {
         this.interest_1 = interest_1;
         this.interest_2 = interest_2;
         this.interest_3 = interest_3;
+        this.longitude = longitude;
+        this.latitude = latitude;
     }
 
     public Long getId() {
