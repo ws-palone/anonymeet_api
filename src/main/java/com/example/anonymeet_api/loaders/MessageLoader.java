@@ -1,9 +1,11 @@
 package com.example.anonymeet_api.loaders;
 
+import ch.qos.logback.core.CoreConstants;
 import com.example.anonymeet_api.models.Message;
 import com.example.anonymeet_api.repositories.MessageRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -12,17 +14,18 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+@Configuration
 public class MessageLoader {
 
-    String sDate1="2021-03-10 18:06:12.000000";
+    String sDate1="2021-03-10 18:06:12.00";
     @Temporal(TemporalType.TIMESTAMP)
     Date date1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SS").parse(sDate1);
 
-    String sDate2="2021-03-11 18:06:12.000000";
+    String sDate2="2021-03-11 18:06:12.00";
     @Temporal(TemporalType.TIMESTAMP)
     Date date2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SS").parse(sDate2);
 
-    String sDate3="2021-03-11 18:07:12.000000";
+    String sDate3="2021-03-11 18:07:12.00";
     @Temporal(TemporalType.TIMESTAMP)
     Date date3 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SS").parse(sDate3);
 
@@ -32,9 +35,11 @@ public class MessageLoader {
     @Bean
     CommandLineRunner clrMessage (MessageRepository messageRepository){
         return args -> {
+            System.out.println("message1");
             Message message1 = new Message(date1,"hello", 2L, 1L);
             Message message2 = new Message(date2,"How are u doing ? :)", 2L, 1L);
             Message message3 = new Message(date3,"Fine and u ?", 1L, 2L);
+            System.out.println(message1);
             messageRepository.saveAll(
                     List.of(message1, message2, message3)
             );
