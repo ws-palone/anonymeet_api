@@ -111,7 +111,9 @@ public class Profile {
         this.id = id;
     }
 
-    public String getEmail() { return email; }
+    public String getEmail() {
+        return email;
+    }
 
     public String getPseudo() {
         return pseudo;
@@ -191,5 +193,25 @@ public class Profile {
 
     public void setLatitude(Double latitude) {
         this.latitude = latitude;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getGenderOrientation() {
+        return genderOrientation;
+    }
+
+    public void setGenderOrientation(String genderOrientation) {
+        this.genderOrientation = genderOrientation;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }
